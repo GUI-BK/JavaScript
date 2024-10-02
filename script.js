@@ -5,6 +5,7 @@ const btnTrocaCor = document.getElementById("trocaCor");
 const btnTrocaTexto = document.getElementById('trocaTexto');
 const btnSoma = document.getElementById("somar");
 const btnBolinhas = document.getElementById("addBolinhas");
+const btnLocalizar = document.getElementById('localiza');
 
 
 //inserção de conteúdo HTML
@@ -46,7 +47,7 @@ btnTrocaCor.addEventListener("click", () => {
     //adiciona bolinhas
     let total = 0;
     let bolinhas = "";
-    let bola = '<div class="bolinha></div>';
+    let bola = '<div class="bolinha"></div>';
 
     btnBolinhas.addEventListener("click", () =>{
         total = total +1;
@@ -55,6 +56,18 @@ btnTrocaCor.addEventListener("click", () => {
             bolinhas = bolinhas+bola;
         }
         document.getElementById("agrupaBolinhas").innerHTML = bolinhas;
+});
+
+    //localiza
+    btnLocalizar.addEventListener("click", () => {
+        function showPosition(position) {
+            let latitude = position.coords.latitude;
+            let longitude = position.coords.longitude;
+
+            console.log("Latitude:" + latitude + " Longitude:" + longitude);
+        }
+        let coordenadas = navigator.geolocation.getCurrentPosition(showPosition);
     });
+
 
 
